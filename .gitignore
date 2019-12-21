@@ -1,0 +1,8 @@
+# dependency directory
+node_modules
+
+# environment variables 
+.env
+
+# misc
+.DS_Store
