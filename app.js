@@ -7,7 +7,17 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+const mongoose = require('mongoose')
+require('dotenv').config()
+
 const app = express();
+
+mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => {
+    console.log('Connected to Mongo!');
+  }).catch(err => {
+    console.error('Error connecting to mongo', err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
