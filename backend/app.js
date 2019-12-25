@@ -12,7 +12,7 @@ require('dotenv').config()
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect('mongodb://mongo:27017/coding-challenge-dec19', { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Mongo!');
   }).catch(err => {
@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
