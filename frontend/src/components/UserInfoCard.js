@@ -3,8 +3,10 @@ import React from 'react'
 const UserInfoCard = props => {
   return (
     <div>
-      <ul style={{listStyleType: 'none',
-  textAlign: 'left'}}>
+      <ul style={{
+        listStyleType: 'none',
+        textAlign: 'left'
+      }}>
         <li>
           id: {props._id}
         </li>

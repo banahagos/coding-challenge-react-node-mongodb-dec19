@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import UserInfoCard from './components/UserInfoCard';
+import Search from './components/Search';
 import './App.css';
 
 
@@ -10,6 +11,8 @@ class App extends React.Component {
     this.state = {
       listOfUsers: [],
       isLoading: true,
+      searchTerm: '',
+      searchBy: '_id'
     }
   }
 
@@ -24,35 +27,52 @@ class App extends React.Component {
         listOfUsers: listOfUsers.data,
         isLoading: false
       })
-      console.log(listOfUsers.data)
     } catch (err) {
-      console.log(err, 'something went wrong with getting the list of users')
+      console.log(err, 'something went wrong with fetching the list of users')
     }
   }
 
- 
+  getSearch = obj => {
+    this.setState(obj)
+  }
 
   render() {
     if (this.state.isLoading) {
       return <div>...loading</div>
     }
 
+    const matchingSearch = this.state.listOfUsers.filter(user => {
+      if (this.state.searchBy !== 'gender') {
+        return user[this.state.searchBy].toString().toLowerCase().includes(this.state.searchTerm.toLowerCase().trim())
+      } else {
+        return user[this.state.searchBy].toLowerCase().startsWith(this.state.searchTerm.toLowerCase().trim())
+      }
+    })
+
     return (
       <div className="App">
+
+        <Search
+          getSearch={this.getSearch}
+          searchTerm={this.state.searchTerm}
+          searchBy={this.state.searchBy}
+        />
+
         <div className="search-results">
-          {this.state.listOfUsers.map(u => {
+          <p>{matchingSearch.length} results</p>
+          {matchingSearch.map(user => {
             return (
               <UserInfoCard
-                key={u._id}
-                _id={u._id}
-                age={u.age}
-                eyeColor={u.eyeColor}
-                name={u.name}
-                gender={u.gender}
-                company={u.company}
-                email={u.email}
-                phone={u.phone}
-                address={u.address}
+                key={user._id}
+                _id={user._id}
+                age={user.age}
+                eyeColor={user.eyeColor}
+                name={user.name}
+                gender={user.gender}
+                company={user.company}
+                email={user.email}
+                phone={user.phone}
+                address={user.address}
               />
             )
           })}
@@ -64,3 +84,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+
