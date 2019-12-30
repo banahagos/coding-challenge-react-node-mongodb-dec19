@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import UserInfoCard from './components/UserInfoCard';
+import UserInfo from './components/UserInfo'
 import Search from './components/Search';
 import './App.css';
+
 
 
 class App extends React.Component {
@@ -58,11 +59,14 @@ class App extends React.Component {
           searchBy={this.state.searchBy}
         />
 
+        <div className="number-of-results">
+          {matchingSearch.length > 1 ? <p> {matchingSearch.length} results</p> : <p> {matchingSearch.length} result</p>}
+        </div>
+
         <div className="search-results">
-          <p>{matchingSearch.length} results</p>
           {matchingSearch.map(user => {
             return (
-              <UserInfoCard
+              <UserInfo
                 key={user._id}
                 _id={user._id}
                 age={user.age}
@@ -84,5 +88,4 @@ class App extends React.Component {
 }
 
 export default App;
-
 

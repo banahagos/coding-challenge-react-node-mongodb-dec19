@@ -24,7 +24,7 @@ services:
     volumes:
       - ./data:/data
     command:
-      "mongoimport --host mongo --port 27017 --db coding-challenge-dec19 --mode upsert --type json --file /data/users.json --jsonArray"
+      "mongoimport --host mongo --port 27017 --db data --mode upsert --type json --file /data/users.json --jsonArray"
   mongo: 
     image: 'mongo:4.2.2'
     ports:

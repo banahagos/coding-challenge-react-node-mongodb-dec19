@@ -1,38 +1,95 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 .App {
-  text-align: center;
+  margin: 5%;
+  font-family: 'Nunito', sans-serif;;
 }
 
-.App-logo {
-  height: 40vmin;
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.searchby-container {
+  width: 35%; 
+}
+
+.select-container {
+  padding: 10px;
+  border: 1px solid #054695;
+  position: relative;
+  border-radius: 3px;
+}
+  
+.select-container  select {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  color: #054695;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.select-container::after {
+  content: "keyboard_arrow_down";
+  font-family: "material icons";
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #054695;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+      
+.search-term-input { 
+  width: 56%;
+  padding: 10px;
+  border: 1px solid #054695;
+  color: #054695;
+  border-radius: 3px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+        
+.search-term-input::placeholder {
+  font-size: 14px;
+  color: rgba(5,70,149,0.5);
+}
+    
+.number-of-results {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-end;
+  color: #054695;
 }
 
-.App-link {
-  color: #61dafb;
+.search-results {
+  max-height: 90vh;
+  overflow: scroll;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+table {
+  padding: 15px 0px 15px 0px;
+  width: 100vw;
+}
+        
+tr {
+  color: #054695;
+  font-size: 15px;
+  text-align: left;
+  background-color: #EDF0FC;
   }
-  to {
-    transform: rotate(360deg);
+
+th {
+   padding: 5px 10px 5px 10px;
+   width: 20%        
   }
+  
+td {
+  padding: 5px 10px 5px 10px;
+  width: 80%
 }
