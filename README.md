@@ -7,3 +7,4 @@ The app is built with NodeJS, React and MongoDB which exist in their own Docker 
 ## Run Application locally
 
 * docker-compose up
+* go to localhost:3000
